@@ -1,0 +1,367 @@
+﻿@using FontColorExperiment.Models.Experiment;
+@using FontColorExperiment.Models.Question;
+@using FontColorExperiment.Models.User;
+@model FontColorExperiment.Models.AdminPageData
+
+@{
+    ViewData["Title"] = "Admin";
+    string uploadStatus = "Upload new experiment data";
+    string uploadPanelColor = "panel-default";
+    if (Model.UploadSuccess == 0)
+    {
+        uploadStatus = "Upload failed!";
+        uploadPanelColor = "panel-danger";
+    }
+    else if (Model.UploadSuccess == 1)
+    {
+        uploadStatus = "Upload complete";
+        uploadPanelColor = "panel-success";
+    }
+}
+
+@functions{
+    public List<string> UserAnswersJoin(Dictionary<int, Dictionary<int, UserResponse>> answers)
+    {
+        List<string> items = new List<string>();
+        foreach (var kvA in answers)
+        {
+            foreach (var kvB in kvA.Value)
+            {
+                items.Add($"{kvA.Key}-{kvB.Key}: {Newtonsoft.Json.JsonConvert.SerializeObject(kvB.Value)}");
+            }
+        }
+        return items;
+    }
+
+    public List<string> UserSampleOrder(List<int[]> order)
+    {
+        List<string> items = new List<string>();
+        foreach (int[] item in order)
+            items.Add(string.Format("{0}-{1}", item[0], item[1]));
+        return items;
+    }
+}
+
+<div class="container-table container">
+    <div class="row center-block" style="margin-bottom: 20px;">
+        <div class="col-md-5 col-md-offset-1">
+            <div class="panel @uploadPanelColor">
+                <div class="panel-heading">
+                    @uploadStatus
+                </div>
+                <div class="panel-body">
+                    <form id="experimentDataUpload" action="/api/admin/experimentupload" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group">
+                            <input type="file" class="form-control" id="file" accept=".json" name="file" style="margin-left: 10px;">
+                        </div>
+                        <div class="form-group pull-right">
+                            <button type="submit" class="btn btn-default" style="margin-right: 10px;">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="row">
+                <button class="btn btn-warning btn-block" onclick="clickLogout()">Logout</button>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <button class="btn btn-danger btn-block" onclick="clickResetUsers()">Reset Users</button>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <a class="btn btn-default btn-block" href="/api/admin/data">Download Data</a>
+            </div>
+        </div>
+    </div>
+    <div class="panel-group" id="mainData">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#mainData" href="#mainDataCollapse1">User Experiment Data</a>
+                </h4>
+            </div>
+            <div id="mainDataCollapse1" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="panel-group">
+                        @foreach (UserData user in Model.Users)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    @Html.DisplayNameFor(userItem => user.Id) (@user.Id.ToString())
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayNameFor(userItem => user.CurrentSampleOrder)
+                                                </td>
+                                                <td>
+                                                    @if (user.CurrentSample == user.SampleOrder.Count)
+                                                    {
+                                                        <p>(Maximum sample has been reached)</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        @string.Format("{0}-{1}", user.CurrentSampleOrder[0], user.CurrentSampleOrder[1])
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayNameFor(userItem => user.SampleOrder)
+                                                </td>
+                                                <td>
+                                                    @string.Join(",", UserSampleOrder(user.SampleOrder))
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayNameFor(userItem => user.Answers)
+                                                </td>
+                                                <td>
+                                                    @foreach (string item in UserAnswersJoin(user.Answers))
+                                                    {
+                                                        <p>@item</p>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayNameFor(userItem => user.Step)
+                                                </td>
+                                                <td>
+                                                    @user.Step
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayNameFor(userItem => user.FinalAnswers)
+                                                </td>
+                                                <td>
+                                                    @Newtonsoft.Json.JsonConvert.SerializeObject(user.FinalAnswers)
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#mainData" href="#mainDataCollapse2">Experiment Data</a>
+                </h4>
+            </div>
+            <div id="mainDataCollapse2" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="panel-group">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                @Html.DisplayNameFor(model => Model.Experiment.MainPageText)
+                            </div>
+                            <div class="panel-body">
+                                @Model.Experiment.MainPageText
+                            </div>
+                        </div>
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                @Html.DisplayNameFor(experiment => Model.Experiment.Experiments)
+                            </div>
+                            <div class="panel-body">
+                                <div class="panel-group">
+                                    @foreach (ExperimentData data in Model.Experiment.Experiments.Values)
+                                    {
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                @Html.DisplayNameFor(dataItem => data.Id) (@data.Id.ToString())
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayNameFor(dateItem => data.Foreground)
+                                                                </td>
+                                                                <td style="background-color: rgb(@data.Foreground.R, @data.Foreground.G, @data.Foreground.B)"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayNameFor(dateItem => data.Background)
+                                                                </td>
+                                                                <td style="background-color: rgb(@data.Background.R, @data.Background.G, @data.Background.B)"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="panel-group">
+                                                        @foreach (ExperimentSample sample in data.Samples.Values)
+                                                        {
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    @Html.DisplayNameFor(sampleItem => sample.Id) (@sample.Id.ToString())
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="row">
+                                                                        <table class="table table-bordered">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        @Html.DisplayNameFor(sampleItem => sample.Name)
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @sample.Name
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        @Html.DisplayNameFor(sampleItem => sample.SampleText)
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        @sample.SampleText
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="panel-group">
+                                                                            @foreach (QuestionData question in sample.Questions.Values)
+                                                                            {
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-heading">
+                                                                                        @Html.DisplayNameFor(questionItem => question.Id) (@question.Id.ToString())
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+                                                                                        <table class="table table-bordered">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        @Html.DisplayNameFor(questionItem => question.QuestionString)
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        @question.QuestionString
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        @Html.DisplayNameFor(questionItem => question.Type)
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        @question.Type.ToString()
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td>
+                                                                                                        @Html.DisplayNameFor(questionItem => question.QuestionItems)
+                                                                                                    </td>
+                                                                                                    <td>
+                                                                                                        @foreach (var kv in question.QuestionItems)
+                                                                                                        {
+                                                                                                            <p>@string.Format("{0}: {1}", kv.Key, kv.Value)</p>
+                                                                                                        }
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </div>
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                @Html.DisplayNameFor(experiment => Model.Experiment.FinalQuestions)
+                            </div>
+                            <div class="panel-body">
+                                <div class="panel-group">
+                                    @foreach (QuestionData question in Model.Experiment.FinalQuestions.Values)
+                                    {
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                @Html.DisplayNameFor(questionItem => question.Id) (@question.Id.ToString())
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayNameFor(questionItem => question.QuestionString)
+                                                            </td>
+                                                            <td>
+                                                                @question.QuestionString
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayNameFor(questionItem => question.Type)
+                                                            </td>
+                                                            <td>
+                                                                @question.Type.ToString()
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayNameFor(questionItem => question.QuestionItems)
+                                                            </td>
+                                                            <td>
+                                                                @foreach (var kv in question.QuestionItems)
+                                                                {
+                                                                    <p>@string.Format("{0}: {1}", kv.Key, kv.Value)</p>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#mainData" href="#mainDataCollapse3">Log</a>
+                </h4>
+            </div>
+            <div id="mainDataCollapse3" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @foreach (string log in Model.LogData.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <p>@log</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<environment names="Development">
+    <script src="~/js/page.admin.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/page.admin.min.js" asp-append-version="true"></script>
+</environment>

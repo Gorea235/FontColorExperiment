@@ -1,0 +1,64 @@
+﻿@using FontColorExperiment.Models.Question
+@model FontColorExperiment.Models.Experiment.ExperimentCurrentSample
+
+@{
+
+}
+
+<script>
+    currentDisplay = 3;
+    $(document.body).attr("style", "background-color: #FFFFFF;")
+</script>
+<!-- store the list of question IDs in the data attribute -->
+<div class="row" id="questionGroup" data-questions="@HtmlEncoder.Encode(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Sample.Questions.Keys))">
+    <div class="panel-group">
+        @foreach (QuestionData question in Model.Sample.Questions.Values)
+        {
+            <div class="panel panel-default" id="question-@question.Id" data-questiontype="@((int)question.Type)">
+                <div class="panel-heading">
+                    @question.QuestionString
+                </div>
+                <div class="panel-body">
+                    @switch (question.Type)
+                    {
+                        case QuestionType.Radio:
+                            foreach (var item in question.QuestionItems)
+                            {
+                                <div class="radio">
+                                    <label><input type="radio" name="question-@question.Id" value="@item.Key" />@item.Value</label>
+                                </div>
+                            }
+                            break;
+                        case QuestionType.Checkbox:
+                            foreach (var item in question.QuestionItems)
+                            {
+                                <div class="checkbox">
+                                    <label><input type="checkbox" name="question-@question.Id" value="@item.Key" />@item.Value</label>
+                                </div>
+                            }
+                            break;
+                        case QuestionType.Dropdown:
+                            <div class="form-group">
+                                <select class="form-control" id="question-select-@question.Id">
+                                    <option selected disabled>-- Select option --</option>
+                                    @foreach (var item in question.QuestionItems)
+                                    {
+                                        <option value="@item.Key">@item.Value</option>
+                                    }
+                                </select>
+                            </div>
+                            break;
+                        case QuestionType.TextBox:
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="question-text-@question.Id" />
+                            </div>
+                            break;
+                        case QuestionType.MultiChoiceGrid:
+                            <p>-- Not implemented --</p>
+                            break;
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="center-block">
+    <div class="row" style="margin-bottom:20px;">
+        <div class="col-md-10 col-md-offset-1">
+            @foreach (string item in Model.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                <p>@item</p>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 pull-right">
+            <button class="btn btn-primary" id="btnStart" onclick="clickStart()">Start Test</button>
+        </div>
+    </div>
+</div>
+
+<environment names="Development">
+    <script src="~/js/page.index.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/page.index.min.js" asp-append-version="true"></script>
+</environment>

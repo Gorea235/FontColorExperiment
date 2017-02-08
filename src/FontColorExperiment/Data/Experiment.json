@@ -1,0 +1,149 @@
+{
+  "MainPageText": "Main page info",
+  "Experiments": {
+    "0": {
+      "Background": {
+        "A": 255,
+        "R": 127,
+        "G": 255,
+        "B": 0
+      },
+      "Foreground": {
+        "A": 255,
+        "R": 0,
+        "G": 255,
+        "B": 255
+      },
+      "Id": 0,
+      "Samples": {
+        "0": {
+          "Id": 0,
+          "Name": "sample 1",
+          "SampleText": "sample text",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "question 1",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "ans 1",
+                "1": "ans 2",
+                "2": "ans 3"
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "question 2",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "ans 1",
+                "1": "ans 2",
+                "2": "ans 3"
+              },
+              "Type": 1
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "question 3",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "ans 1",
+                "1": "ans 2",
+                "2": "ans 3"
+              },
+              "Type": 2
+            },
+            "3": {
+              "Id": 3,
+              "QuestionString": "question 4",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {},
+              "Type": 3
+            }
+          }
+        },
+        "1": {
+          "Id": 1,
+          "Name": "sample 2",
+          "SampleText": "sample text 2",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "question 1-2",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "ans 1",
+                "1": "ans 2"
+              },
+              "Type": 0
+            }
+          }
+        }
+      }
+    },
+    "1": {
+      "Background": {
+        "A": 255,
+        "R": 240,
+        "G": 255,
+        "B": 240
+      },
+      "Foreground": {
+        "A": 255,
+        "R": 100,
+        "G": 149,
+        "B": 237
+      },
+      "Id": 1,
+      "Samples": {
+        "0": {
+          "Id": 0,
+          "Name": "sample 1",
+          "SampleText": "sample 2-1",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "question 1",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "ans 1",
+                "1": "ans 2"
+              },
+              "Type": 0
+            }
+          }
+        },
+        "1": {
+          "Id": 1,
+          "Name": "sample 2",
+          "SampleText": "sample 2-2",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "question a",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "ans 1",
+                "1": "ans 2"
+              },
+              "Type": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "FinalQuestions": {
+    "0": {
+      "Id": 0,
+      "QuestionString": "final question",
+      "QuestionStringSecondary": {},
+      "QuestionItems": {
+        "0": "ans 1",
+        "1": "ans 2"
+      },
+      "Type": 0
+    }
+  }
+}

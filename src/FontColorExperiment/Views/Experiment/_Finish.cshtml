@@ -1,0 +1,23 @@
+﻿@model string
+
+@{
+    ViewData["Title"] = "Experiment Finished";
+}
+
+<script>
+    currentDisplay = 1;
+</script>
+<div class="row" style="margin-bottom: 60px;">
+    <div class="col-md-8 col-md-offset-2">
+        <h3>You have finished the experiment.</h3>
+    </div>
+    <div class="col-md-12" style="margin-top: 20px;">
+        <p>Thank you for completing the experiment! we really appreciate it!</p>
+    </div>
+    <div class="col-md-12" style="margin-top: 20px;">
+        <p>In order to enable you to purge your data if you did not wish to participate in the experiment anymore, we have provided you a unique ID that is a direct
+        reference to your data. We do not have any way of knowing which IDs relate to which participants unless you explicitly tell us. Your user ID is the following
+        code:</p>
+        <p>@Model</p>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Test";
+}
+
+<div class="center-block">
+    <div class="row" id="expriDisplay">
+        <div class="col-md-8 col-md-offset-2" id="experimentDisplay">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 pull-right">
+            <button class="btn btn-primary" id="btnContinue">Continue</button>
+        </div>
+    </div>
+</div>
+
+<environment names="Development">
+    <script src="~/js/page.experiment.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/page.experiment.min.js" asp-append-version="true"></script>
+</environment>

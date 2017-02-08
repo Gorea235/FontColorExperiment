@@ -1,0 +1,24 @@
+﻿@model FontColorExperiment.Models.Experiment.ExperimentCurrentSample
+
+@{
+    ViewData["Title"] = "Text Sample";
+}
+
+<div class="row" style="margin-top: 20px; margin-bottom: 60px;">
+    <script>
+        currentDisplay = 2;
+        $(document.body).attr("style", "background-color: rgb(@Model.Background.R, @Model.Background.G, @Model.Background.B)")
+    </script>
+    <div class="panel-group" style="color: rgb(@Model.Foreground.R, @Model.Foreground.G, @Model.Foreground.B);">
+        <div class="panel panel-default" style="margin-bottom: 40px; background-color: transparent;">
+            <div class="panel-body">
+                <h4 style="text-align: center; height: 15px;">@Model.Sample.Name</h4>
+            </div>
+        </div>
+        <div class="panel panel-default" style="background-color: transparent;">
+            <div class="panel-body">
+                <p>@Model.Sample.SampleText</p>
+            </div>
+        </div>
+    </div>
+</div>

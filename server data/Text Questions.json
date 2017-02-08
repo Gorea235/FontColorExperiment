@@ -1,0 +1,316 @@
+{
+  "MainPageText": "You will be reading six different text with different background and forground colours, and then asked some questions about said texts.\r\nPlease SKIM read through these text, and then answer all the questions.\r\nThere is also a final question at the end of the asking you which background and foreground colours you prefered. Please answer this question as well.",
+  "Experiments": {
+    "0": {
+      "Background": {
+        "A": 255,
+        "R": 255,
+        "G": 255,
+        "B": 255
+      },
+      "Foreground": {
+        "A": 255,
+        "R": 0,
+        "G": 0,
+        "B": 0
+      },
+      "Id": 0,
+      "Samples": {
+        "0": {
+          "Id": 0,
+          "Name": "The Count of Monte Cristo by Alexander Dumas (1845)",
+          "SampleText": "The pinnacle of prison escape novels, Dumas’ novel is a tale of suffering and retribution. The eponymous count escapes his prison confines and retrieves a hoard of treasure, setting in motion his justified revenge. Our sympathies always remain with the innocent Edmond Dantès, and we relish every second of his reprisal.",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "Who is the author of this book?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Alexander Dumas",
+                "1": "Victor Hugo",
+                "2": "Agatha Christie"
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "What is the count trying to accomplish?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Become the Count of Monte Cristo",
+                "1": "Get his justified revenge",
+                "2": "Find a hidden treasure"
+              },
+              "Type": 0
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "What is this novel described as?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "The pinnacle of all murder mysteries",
+                "1": "The principle of all prison escape novels",
+                "2": "The pinnacle of all prison escape novels"
+              },
+              "Type": 0
+            }
+          }
+        },
+        "1": {
+          "Id": 1,
+          "Name": "The Spy who came in from the Cold by John LeCarre (1963)",
+          "SampleText": "Le Carré’s breakthrough novel makes an appearance in my book, noting that it was written by the spy master in the very year I follow in Berlin (1962). The Berlin Wall had just gone up and escapes in any and all forms were attempted daily. The book concludes with the memorable scene atop the Wall as hero Alec Leamas attempts to help his lover Liz Gold over the barrier – but she falls backs as gunfire erupts and instead of jumping to safety in the west he leaps back to the east and certain death.",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "When and where is this book set?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Berlin, 1962, just after the Berlin wall was built",
+                "1": "Hamberg, 1870, during the Franco-Prussian war",
+                "2": "Amsterdam, 1939, during WW2"
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "What does the protagonist do at the end of the book?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "He saves his lover and manges to climb over the wall",
+                "1": "He attempts to save his lover but ultimatly fails and jumps back over the wall to certain death",
+                "2": "He attempts to save his lover but ultimatly fails and climbs over the wall to safety"
+              },
+              "Type": 0
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "What is the author described as?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "A spy master",
+                "1": "A sky-diving meister",
+                "2": "A sun tanned monster"
+              },
+              "Type": 0
+            }
+          }
+        }
+      }
+    },
+    "1": {
+      "Background": {
+        "A": 255,
+        "R": 0,
+        "G": 128,
+        "B": 0
+      },
+      "Foreground": {
+        "A": 255,
+        "R": 124,
+        "G": 252,
+        "B": 0
+      },
+      "Id": 1,
+      "Samples": {
+        "0": {
+          "Id": 0,
+          "Name": "A Tale of Two Cities by Charles Dickens (1859)",
+          "SampleText": "Yes, we may remember Madame LaFarge and the closing execution scene, but the plot actually pivots on the Sidney Carton/Charles Darnay prison switcheroo. And the memorable line tied to the escape: “It is a far, far better thing that I do, than I have ever done; it is a far, far better rest that I go to than I have ever known.”",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "What is the most memorable line of the book?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "May the force be with you",
+                "1": "All work and no pay make Jack a dull boy",
+                "2": "It is a far, far better thing that I do, than I have ever done; it is a far, far better rest that I go to than I have ever known."
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "Who does the plot revolve around?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Sidney Carton and Charles Darnay",
+                "1": "Madame LaFarge",
+                "2": "Charles Dickens"
+              },
+              "Type": 0
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "When was this book published?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "1859",
+                "1": "1984",
+                "2": "1600"
+              },
+              "Type": 0
+            }
+          }
+        },
+        "1": {
+          "Id": 1,
+          "Name": "Rita Hayworth and Shawshank Redemption by Stephen King (1982)",
+          "SampleText": "There is no character we root for in this oddly titled novella more than Andy Dufresne. Andy’s resolution is idyllic to say the least, as his unbelievably well-organised escape – from tunnelling through the prison wall to the black rock hiding a crucial letter – works perfectly in his favour, leaving the reader with a smug sense of satisfaction as the duped prison warden is left scratching his head.",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "What is the name of the character that readers root for the most",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Andy Dufrenese",
+                "1": "Brandy Cunfrenese",
+                "2": "Sandy Dunes"
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "How did the protagonist escape from prison?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "He disguised himself as a janitor",
+                "1": "He tunneled through the prison",
+                "2": "He actually didn't succed"
+              },
+              "Type": 0
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "What do most readers fell at the end of the book?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Smug satisfaction at how confused the duped warden is",
+                "1": "Sympathy for the duped warden",
+                "2": "Sad for the main character because he was caught in the end"
+              },
+              "Type": 0
+            }
+          }
+        }
+      }
+    },
+    "2": {
+      "Background": {
+        "A": 255,
+        "R": 0,
+        "G": 0,
+        "B": 0
+      },
+      "Foreground": {
+        "A": 255,
+        "R": 255,
+        "G": 0,
+        "B": 0
+      },
+      "Id": 2,
+      "Samples": {
+        "0": {
+          "Id": 0,
+          "Name": "Room by Emma Donoghue (2010)",
+          "SampleText": "Donoghue’s story of a young boy called Jack and his resourceful ma, held captive and forced to exist solely in “Room”, is a very different kind of escape novel. Told entirely from the innocent point of view of Jack, who has no experience of the outside world, the escape itself is a gruelling moment as we desperately hope that this confused and vulnerable child will be able to save himself and his mother. But what really makes this novel so distinct is its depiction of the aftermath; there is no immediate fist-in-the-air triumph, but a long and difficult struggle to return to normality after a traumatic event.",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "From whose point of view is this story told?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "Jack’s innocent point of view",
+                "1": "Jack’s resourceful mother",
+                "2": "The person whose holding Jack and his mother prisoner"
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "What is the aftermath of the escape?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "A fist-in-the-air type triumph",
+                "1": "A long and difficult struggle to return to normality after a traumatic event",
+                "2": "The boy and his mother are recaptured and put back in the “Room”"
+              },
+              "Type": 0
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "What is considered to be the most gruelling moment in the book?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "The escape",
+                "1": "The planning of the escape",
+                "2": "The aftermath"
+              },
+              "Type": 0
+            }
+          }
+        },
+        "1": {
+          "Id": 1,
+          "Name": "Follow the Rabbit-Proof Fence by Doris Pilkington (1992)",
+          "SampleText": "Having to escape an institution that has been sanctioned by the government to support prejudicial and extremist philosophies is not unusual in literature. After all, history has given us many real-life events to draw upon. But Pilkington’s novel, focusing on the “stolen generation” of Indigenous Australian children removed from their families by government agencies, is particularly unsettling because it explores a period of history not often discussed and because the escapees are children.",
+          "Questions": {
+            "0": {
+              "Id": 0,
+              "QuestionString": "When is the book written?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "1990",
+                "1": "1995",
+                "2": "1992"
+              },
+              "Type": 0
+            },
+            "1": {
+              "Id": 1,
+              "QuestionString": "What did the australian government do to the indigenous Australians?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "They rounded them up and put them in camps",
+                "1": "They removed children from families by using government agencies",
+                "2": "They helped them financially"
+              },
+              "Type": 0
+            },
+            "2": {
+              "Id": 2,
+              "QuestionString": "Why is this novel considered unsettling?",
+              "QuestionStringSecondary": {},
+              "QuestionItems": {
+                "0": "It’s set in a period of history not often discussed and because the escapee are children",
+                "1": "It’s set in a period of history which is well known and because the escapee are teens",
+                "2": "It’s set in a period of history not often discussed and because the escapee are adults"
+              },
+              "Type": 0
+            }
+          }
+        }
+      }
+    }
+  },
+  "FinalQuestions": {
+    "0": {
+      "Id": 0,
+      "QuestionString": "On a scale of 1 to 6, which foreground and background did you prefer?",
+      "QuestionStringSecondary": {
+        "0": "1",
+        "1": "2",
+        "2": "3",
+        "3": "4",
+        "4": "5",
+        "5": "6"
+      },
+      "QuestionItems": {
+        "0": "The black on white combination",
+        "1": "The light green on dark green combination",
+        "2": "The red on black combination"
+      },
+      "Type": 0
+    }
+  }
+}

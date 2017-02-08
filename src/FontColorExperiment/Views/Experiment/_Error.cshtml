@@ -1,0 +1,44 @@
+﻿@model System.Exception
+
+@{
+    ViewData["Title"] = "Error Page";
+}
+
+<script>
+    currentDisplay = 0;
+</script>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2" style="margin-top: 20px; margin-bottom: 60px;">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                An error has occured.
+            </div>
+            <div class="panel-body">
+                @if (@Model == null)
+                {
+                    <p>An error occured during the processing, please refresh the page. If the problem continues, please contact an admin.</p>
+                }
+                else
+                {
+                    <p>Exception Details:</p>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Message
+                        </div>
+                        <div class="panel-body">
+                            @Model.Message
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Stack Trace
+                        </div>
+                        <div class="panel-body">
+                            @Model.StackTrace
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
