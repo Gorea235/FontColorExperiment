@@ -1,5 +1,4 @@
 using FontColorExperiment.Utils;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FontColorExperiment.Models.Experiment

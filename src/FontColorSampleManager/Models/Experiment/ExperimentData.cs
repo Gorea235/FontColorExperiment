@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FontColorExperiment.Models.Base;
+﻿using FontColorExperiment.Models.Base;
 using FontColorExperiment.Utils;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FontColorExperiment.Models.Experiment
 {

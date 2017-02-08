@@ -1,8 +1,5 @@
-﻿using System;
+﻿using FontColorExperiment.Models.Question;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FontColorExperiment.Models.Question;
 
 namespace FontColorExperiment.Models.Experiment
 {
